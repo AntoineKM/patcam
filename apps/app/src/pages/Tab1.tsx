@@ -9,6 +9,7 @@ import flvjs from "flv.js";
 import React from "react";
 
 import "./Tab1.css";
+import { endpoint } from "../services/streaming";
 
 const Tab1: React.FC = () => {
   React.useEffect(() => {
@@ -20,7 +21,7 @@ const Tab1: React.FC = () => {
       // Create an instance of FLV.js player
       const flvPlayer = flvjs.createPlayer({
         type: "flv",
-        url: "http://192.168.1.26:8000/live/HELLO_WORLD.flv",
+        url: `${endpoint}/live/HELLO_WORLD.flv`,
       });
 
       // Attach the player to the video element
