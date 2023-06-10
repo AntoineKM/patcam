@@ -7,7 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "patcam",
+    "productName": "Patcam",
     "version": "0.1.0"
   },
   "tauri": {

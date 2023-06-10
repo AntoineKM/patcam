@@ -1,22 +1,51 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import flvjs from "flv.js";
+import React from "react";
+
+import "./Tab1.css";
 
 const Tab1: React.FC = () => {
+  React.useEffect(() => {
+    if (flvjs.isSupported()) {
+      const videoElement = document.getElementById(
+        "videoPlayer"
+      ) as HTMLVideoElement;
+
+      // Create an instance of FLV.js player
+      const flvPlayer = flvjs.createPlayer({
+        type: "flv",
+        url: "http://192.168.1.26:8000/live/HELLO_WORLD.flv",
+      });
+
+      // Attach the player to the video element
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    } else {
+      console.error("FLV.js is not supported.");
+    }
+  }, []);
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>{"RMTP"}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse={"condense"}>
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size={"large"}>{"RMTP"}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <video id={"videoPlayer"} controls autoPlay />
       </IonContent>
     </IonPage>
   );
