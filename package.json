@@ -4,6 +4,7 @@
   "author": "Antoine Kingue <contact@antoinek.fr>",
   "license": "MIT",
   "scripts": {
+    "start": "turbo start",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "test": "turbo test",
