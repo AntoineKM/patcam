@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">patcam</string>
+    <string name="title_activity_main">patcam</string>
+    <string name="package_name">fr.antoinek.patcam.app</string>
+    <string name="custom_url_scheme">fr.antoinek.patcam.app</string>
+</resources>

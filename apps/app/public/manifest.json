@@ -1,0 +1,14 @@
+{
+  "short_name": "Patcam",
+  "name": "Patcam",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

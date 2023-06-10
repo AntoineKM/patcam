@@ -1,0 +1,8 @@
+{
+  "name": "patcam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite",
+  "id": "7b50aeda"
+}
