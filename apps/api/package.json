@@ -1,0 +1,23 @@
+{
+  "name": "@antoinekm/patcam-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "author": "Antoine Kingue <contact@antoinek.fr>",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index",
+    "start": "node dist/index",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.6",
+    "@types/node-media-server": "^2.3.4",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "fastify": "^4.18.0",
+    "node-media-server": "^2.6.2"
+  }
+}
