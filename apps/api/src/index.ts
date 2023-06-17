@@ -1,7 +1,13 @@
+import dotenv from "dotenv-flow";
 import fastify from "fastify";
 import NodeMediaServer from "node-media-server";
 
+dotenv.config({
+  silent: true,
+});
+
 const rmtpConfig = {
+  logType: 3,
   rtmp: {
     port: 1935,
     chunk_size: 60000,
