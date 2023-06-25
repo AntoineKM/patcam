@@ -2,6 +2,8 @@ import dotenv from "dotenv-flow";
 import fastify from "fastify";
 import NodeMediaServer from "node-media-server";
 
+import { name, version } from "../package.json";
+
 dotenv.config({
   silent: true,
 });
@@ -31,7 +33,11 @@ const nms = new NodeMediaServer(rmtpConfig);
 
 // Declare a route
 app.get("/", async () => {
-  return { hello: "world" };
+  return {
+    name,
+    version,
+    repo: "https://github.com/AntoineKM/patcam",
+  };
 });
 
 // Run the server!
