@@ -12,8 +12,9 @@ import { IonReactRouter } from "@ionic/react-router";
 import { ellipse, square, triangle } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
 
 import "flvplayer/dist/flvplayer-control.js";
@@ -47,8 +48,11 @@ const App: React.FC = () => (
           <Route exact path={"/tab1"}>
             <Tab1 />
           </Route>
-          <Route exact path={"/tab2"}>
-            <Tab2 />
+          <Route exact path={"/signin"}>
+            <SignIn />
+          </Route>
+          <Route exact path={"/signup"}>
+            <SignUp />
           </Route>
           <Route path={"/tab3"}>
             <Tab3 />
@@ -62,9 +66,9 @@ const App: React.FC = () => (
             <IonIcon aria-hidden={"true"} icon={triangle} />
             <IonLabel>{"Tab 1"}</IonLabel>
           </IonTabButton>
-          <IonTabButton tab={"tab2"} href={"/tab2"}>
+          <IonTabButton tab={"signin"} href={"/signin"}>
             <IonIcon aria-hidden={"true"} icon={ellipse} />
-            <IonLabel>{"Tab 2"}</IonLabel>
+            <IonLabel>{"Se connecter"}</IonLabel>
           </IonTabButton>
           <IonTabButton tab={"tab3"} href={"/tab3"}>
             <IonIcon aria-hidden={"true"} icon={square} />
