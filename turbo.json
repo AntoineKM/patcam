@@ -9,6 +9,7 @@
       "inputs": ["**/*.{ts,tsx,js,jsx}"]
     },
     "build": {
+      "cache": false,
       "dependsOn": ["^build"],
       "outputs": [
         "dist/**"
