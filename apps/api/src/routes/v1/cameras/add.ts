@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
 import CameraModel from "../../../models/Camera";
+import { chechAuth } from "../../../utils/auth";
 
 export const post = async (request: FastifyRequest, _reply: FastifyReply) => {
   const body = request.body as any;
@@ -13,7 +14,11 @@ export const post = async (request: FastifyRequest, _reply: FastifyReply) => {
     name = name.trim();
   }
 
-  // TODO: check if the user is an admin
+  const jwtUser = await chechAuth(request);
+
+  if (!jwtUser) {
+    throw new Error("unauthorized");
+  }
 
   const camera = await CameraModel.create({ name });
 

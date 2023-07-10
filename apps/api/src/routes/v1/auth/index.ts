@@ -3,7 +3,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 
 import UserModel from "../../../models/User";
 import { Role } from "../../../types";
-import generateToken from "../../../utils/generateToken";
+import { generateToken } from "../../../utils/auth";
 
 export const post = async (request: FastifyRequest, _reply: FastifyReply) => {
   const body = request.body as any;

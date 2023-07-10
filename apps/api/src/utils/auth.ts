@@ -2,7 +2,7 @@ import { FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken";
 
 import { SECRET_KEY } from "../services/app";
-import { JWTUser, Role } from "../types";
+import { JWTUser, Role, User } from "../types";
 
 export const chechAuth = async (req: FastifyRequest): Promise<JWTUser> => {
   const authHeader = req.headers.authorization;
@@ -34,4 +34,16 @@ export const hasRole = (user: JWTUser, role: Role) => {
   } else {
     throw new Error("unauthorized");
   }
+};
+
+export const generateToken = (user: User) => {
+  return jwt.sign(
+    {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+    },
+    SECRET_KEY,
+    { expiresIn: "30d" }
+  );
 };
