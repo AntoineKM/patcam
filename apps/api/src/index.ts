@@ -1,7 +1,11 @@
 import dotenv from "dotenv-flow";
 import fastify from "fastify";
+import mongoose from "mongoose";
 import NodeMediaServer from "node-media-server";
 
+import routes from "./routes";
+import { databaseUri } from "./services/mongodb";
+import Log from "./utils/log";
 import { name, version } from "../package.json";
 
 dotenv.config({
@@ -28,23 +32,37 @@ const fastifyConfig = {
   logger: true,
 };
 
-const app = fastify(fastifyConfig);
-const nms = new NodeMediaServer(rmtpConfig);
-
-// Declare a route
-app.get("/", async () => {
-  return {
-    name,
-    version,
-    repo: "https://github.com/AntoineKM/patcam",
-  };
-});
-
-// Run the server!
 const main = async () => {
+  Log.wait("loading env files");
+  dotenv
+    .listDotenvFiles(".", {
+      node_env: process.env.NODE_ENV,
+    })
+    .forEach((file: string) => Log.info(`loaded env from ${file}`));
+
+  const app = fastify(fastifyConfig);
+  const nms = new NodeMediaServer(rmtpConfig);
+
+  app.get("/", async () => {
+    return {
+      name,
+      version,
+      repo: "https://github.com/AntoineKM/patcam",
+    };
+  });
+  app.register(routes);
+
   try {
     nms.run();
-    await app.listen({ port: 3000 });
+    Log.wait("connecting to mongodb...");
+    await mongoose.connect(databaseUri);
+    Log.event("connected to mongodb");
+
+    const address = await app.listen(
+      process.env.PORT || 8000,
+      process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost"
+    );
+    Log.ready(`started server on ${address}`);
   } catch (err) {
     app.log.error(err);
     process.exit(1);
