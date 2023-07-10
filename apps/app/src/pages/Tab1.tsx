@@ -10,8 +10,6 @@ import React from "react";
 
 import { streamingEndpoint } from "../services/streaming";
 
-import "./Tab1.css";
-
 const Tab1: React.FC = () => {
   React.useEffect(() => {
     if (FlvPlayer.isSupported()) {
