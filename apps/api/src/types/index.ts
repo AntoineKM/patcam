@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 export type User = {
   email: string;
+  password?: string;
   role: Role;
+  createdAt: Date;
 };
 
 export enum Role {
@@ -11,5 +13,5 @@ export enum Role {
 
 export type Camera = {
   name: string;
-  slug: string;
+  createdAt: Date;
 };
