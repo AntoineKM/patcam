@@ -5,18 +5,18 @@ import path from "path";
 
 import Log from "../utils/log";
 
-function flatten(lists) {
-  return lists.reduce((a, b) => a.concat(b), []);
+function flatten(lists: any[]): any[] {
+  return lists.reduce((a: any[], b: any) => a.concat(b), []);
 }
 
-function getDirectories(srcpath) {
+function getDirectories(srcpath: string) {
   return fs
     .readdirSync(srcpath)
     .map((file) => path.join(srcpath, file))
     .filter((path) => fs.statSync(path).isDirectory());
 }
 
-function getDirectoriesRecursive(srcpath) {
+function getDirectoriesRecursive(srcpath: string): string[] {
   return [
     srcpath,
     ...flatten(getDirectories(srcpath).map(getDirectoriesRecursive)),
