@@ -26,6 +26,9 @@ importers:
 
   apps/api:
     dependencies:
+      antoine-tsconfig:
+        specifier: ^1.0.4
+        version: 1.0.4
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -2940,6 +2943,10 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
     dev: true
+
+  /antoine-tsconfig@1.0.4:
+    resolution: {integrity: sha512-8wuK/98zNU3wkR2YqEyZzeRr9QoEsli66aVqsgkudw9vXUbqP1t4o2dtx0sR8LfZ4eoeYOA21AIG051KgzLt4Q==}
+    dev: false
 
   /anymatch@3.1.3:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
