@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 
 import UserModel from "../../../models/User";
 import { Role } from "../../../types";
-import { chechAuth, hasRole } from "../../../utils/auth";
+import { checkAuth, hasRole } from "../../../utils/auth";
 
 export const post = async (request: FastifyRequest, _reply: FastifyReply) => {
   const body = request.body as any;
@@ -15,7 +15,7 @@ export const post = async (request: FastifyRequest, _reply: FastifyReply) => {
     email = email.trim();
   }
 
-  const jwtUser = await chechAuth(request);
+  const jwtUser = await checkAuth(request);
 
   if (!jwtUser || !hasRole(jwtUser, Role.SuperAdmin)) {
     throw new Error("unauthorized");
