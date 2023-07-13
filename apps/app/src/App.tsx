@@ -1,6 +1,5 @@
 import {
   IonApp,
-  IonIcon,
   IonLabel,
   IonRouterOutlet,
   IonTabBar,
@@ -9,13 +8,15 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
+import { RiEye2Line, RiSettings4Line } from "react-icons/ri";
 import { Redirect, Route } from "react-router-dom";
 
+import GlobalStyle from "./components/GlobalStyle";
+import Camera from "./pages/Camera";
+import Monitor from "./pages/Monitor";
+import Settings from "./pages/Settings";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Tab1 from "./pages/Tab1";
-import Tab3 from "./pages/Tab3";
 
 import "flvplayer/dist/flvplayer-control.js";
 
@@ -42,11 +43,15 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
+    <GlobalStyle />
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path={"/tab1"}>
-            <Tab1 />
+          <Route exact path={"/monitor"}>
+            <Monitor />
+          </Route>
+          <Route exact path={"/monitor/camera"}>
+            <Camera />
           </Route>
           <Route exact path={"/signin"}>
             <SignIn />
@@ -54,25 +59,21 @@ const App: React.FC = () => (
           <Route exact path={"/signup"}>
             <SignUp />
           </Route>
-          <Route path={"/tab3"}>
-            <Tab3 />
+          <Route path={"/settings"}>
+            <Settings />
           </Route>
           <Route exact path={"/"}>
-            <Redirect to={"/tab1"} />
+            <Redirect to={"/monitor"} />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot={"bottom"}>
-          <IonTabButton tab={"tab1"} href={"/tab1"}>
-            <IonIcon aria-hidden={"true"} icon={triangle} />
-            <IonLabel>{"Tab 1"}</IonLabel>
+          <IonTabButton tab={"monitor"} href={"/monitor"}>
+            <RiEye2Line size={28} />
+            <IonLabel>{"Surveillance"}</IonLabel>
           </IonTabButton>
-          <IonTabButton tab={"signin"} href={"/signin"}>
-            <IonIcon aria-hidden={"true"} icon={ellipse} />
-            <IonLabel>{"Se connecter"}</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab={"tab3"} href={"/tab3"}>
-            <IonIcon aria-hidden={"true"} icon={square} />
-            <IonLabel>{"Tab 3"}</IonLabel>
+          <IonTabButton tab={"settings"} href={"/settings"}>
+            <RiSettings4Line size={28} />
+            <IonLabel>{"Paramètres"}</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
