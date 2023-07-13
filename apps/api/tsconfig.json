@@ -2,7 +2,9 @@
   "extends": "antoine-tsconfig/node.json",
   "compilerOptions": {
     "outDir": "./dist",
+    "strict": true,
+    "moduleResolution": "node"
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "jest.config.js"],
   "exclude": ["node_modules", "dist/"]
 }
